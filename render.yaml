@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: daedalus-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Add these in the Render dashboard under Environment — do NOT hardcode secrets here
+      # - key: COINBASE_API_KEY
+      #   value: your_api_key_id_here
+      # - key: COINBASE_API_SECRET
+      #   value: your_secret_key_here
+      # - key: BACKEND_API_KEY
+      #   value: your_chosen_backend_password_here
+    healthCheckPath: /health
+    autoDeploy: true
